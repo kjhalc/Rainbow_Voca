@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
+
+    <!-- 닫기 버튼 -->
+    <ImageButton
+        android:id="@+id/button_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="start|top"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:contentDescription="닫기" />
+
+    <!-- 전체 세로 배치 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="72dp"
+        android:padding="20dp">
+
+        <!-- 📘 지문 영역 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_box_blue_border"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"> <!-- ✅ 지문과 해설 사이 간격 추가 -->
+
+            <TextView
+                android:id="@+id/text_passage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(여기에 지문이 출력됩니다)"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:lineSpacingExtra="6dp" />
+        </LinearLayout>
+
+        <!-- 🧠 해설 영역 (회색 테두리) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:background="@drawable/bg_explanation_box"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"> <!-- ✅ 해설과 버튼 사이 여백 유지 -->
+
+            <TextView
+                android:id="@+id/text_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(여기에 지문 해설이 표시됩니다)"
+                android:textSize="16sp"
+                android:textColor="#444444" />
+        </LinearLayout>
+
+        <!-- 👓 해설 확인 버튼 -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_show_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/rounded_blue_border_button"
+            android:text="해설 확인"
+            android:textSize="16sp" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

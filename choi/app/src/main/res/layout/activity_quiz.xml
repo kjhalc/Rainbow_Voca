@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    tools:context=".ui.WordQuizActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/button_close"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="@android:color/transparent"
+            android:contentDescription="닫기" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/text_quiz_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="140/200"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8" />
+
+    <TextView
+        android:id="@+id/text_quiz_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="apple"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <ImageView
+        android:id="@+id/icon_quiz_speaker"
+        android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:src="@drawable/ic_speaker"
+    android:contentDescription="발음 듣기"
+    android:layout_gravity="center_horizontal"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="36dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 1"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 2"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 3"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 4"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0" />
+
+</LinearLayout>

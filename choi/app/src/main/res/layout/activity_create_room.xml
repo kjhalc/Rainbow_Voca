@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#FAFAFA"> <!-- 배경색을 통일 -->
+
+    <!-- 나의 스터디룸 만들기 텍스트 -->
+    <TextView
+        android:id="@+id/tv_create_study_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나의 스터디룸 만들기"
+        android:textSize="30sp"
+        android:textColor="#66A3FF"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+    <!-- 스터디룸 제목 입력 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+        <EditText
+            android:id="@+id/edit_room_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="스터디룸 제목을 입력하세요"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp"
+            android:background="@android:color/transparent"/> <!-- 배경 투명 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#66A3FF"/> <!-- 파란색 밑줄 -->
+    </LinearLayout>
+
+    <!-- 비밀번호 입력 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+        <EditText
+            android:id="@+id/edit_room_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호를 입력하세요"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp"
+            android:background="@android:color/transparent"/> <!-- 배경 투명 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#66A3FF"/> <!-- 파란색 밑줄 -->
+    </LinearLayout>
+
+    <!-- 스터디룸 만들기 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_create_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="스터디룸 만들기"
+        android:textColor="#66A3FF"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- 스터디룸 리스트로 돌아가기 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back_to_room_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="스터디룸 리스트로 돌아가기"
+        android:textColor="#000000"
+        android:background="@drawable/rounded_grey_border_button"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:onClick="goToStudyRoomListScreen"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_create_room"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+</LinearLayout>

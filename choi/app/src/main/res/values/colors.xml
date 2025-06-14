@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red_delete_background">#D32F2F</color>
+    <color name="green_attendance">#4CAF50</color>
+    <color name="grey_absent">#9E9E9E</color>
+    <color name="grey_light">#F5F5F5</color>
+    <color name="admin_info_background_blue">#6495ED</color>
+
+    // 오답 컬러
+    <color name="red_error_very_light">#FFCDD2</color>
+    <color name="red_error_light">#EF9A9A</color>
+    <color name="red_error_medium">#E57373</color>
+    <color name="red_error_dark">#EF5350</color>
+    <color name="red_error_very_dark">#D32F2F</color>
+    <color name="grey_disabled_icon_bg">#E0E0E0</color>
+
+    <color name="notification_color">#FF6B6B</color>
+
+    <color name="primary">#6200EE</color>
+
+</resources>

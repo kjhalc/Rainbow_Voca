@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    tools:context=".ui.WordQuizActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <!-- 닫기 버튼 (왼쪽 정렬) -->
+        <ImageButton
+            android:id="@+id/button_close"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="@android:color/transparent"
+            android:contentDescription="닫기" />
+
+        <!-- 가운데 정렬을 위한 공간 -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- 퀴즈 진행 현황 -->
+        <TextView
+            android:id="@+id/text_quiz_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="140/200"
+            android:textSize="25sp" />
+
+        <!-- 오른쪽 공간 확보용 (좌우 균형) -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5" />
+    </LinearLayout>
+
+    <!-- 상단 여백 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8" />
+
+    <!-- 퀴즈 단어 -->
+    <TextView
+        android:id="@+id/text_quiz_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="apple"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <!-- 단어와 선택지 사이 여백 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <!-- 선택지 버튼들 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 1"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 2"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 3"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_choice4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="선택지 4"
+        android:background="@drawable/rounded_blue_border_button"
+        android:textColor="@android:color/black" />
+
+
+    <!-- 하단 여백 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0" />
+
+</LinearLayout>

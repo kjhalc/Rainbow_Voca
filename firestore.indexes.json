@@ -1,0 +1,51 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "review_words",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isMastered",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "nextReviewAt",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "review_words",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isMastered",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "nextReviewAt",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "stage",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "review_words",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isMastered",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "stage",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
