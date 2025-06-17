@@ -388,4 +388,29 @@ class WordQuizViewModel(
     fun getQuizResults(): Pair<Int, Int> { // Activity가 결과 전달 시 사용
         return Pair(correctCount, quizWords.size) // quizQuestions.size 대신 quizWords.size 사용
     }
+    
+    //주형추가
+    fun saveCorrectWordsForAiReading() {
+    val correctWordIds = quizQuestions
+        .filterIndexed { index, _ -> index < currentQuestionIndex } // 푼 문제만 대상
+        .filter { question ->
+            val selectedCorrectly = question.correctIndex == question.options.indexOf(question.word.word_mean)
+            selectedCorrectly
+        }
+        .mapNotNull { it.word.docId }
+
+    if (correctWordIds.isEmpty()) {
+        Log.d("WordQuizViewModel", "저장할 맞은 단어가 없습니다.")
+        return
+    }
+
+    wordRepository.saveCorrectWordsForToday(userId, correctWordIds) { success ->
+        if (success) {
+            Log.d("WordQuizViewModel", "✅ Firestore에 맞은 단어 저장 성공")
+        } else {
+            Log.e("WordQuizViewModel", "❌ Firestore에 맞은 단어 저장 실패")
+        }
+    }
+}
+
 }
