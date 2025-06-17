@@ -78,6 +78,9 @@ interface WordRepository {
     // 뷰모델이 파괴될 때 모든 리스너를 정리하여 메모리 누수 방지
     fun removeAllListeners(userId: String)
 
+    // --- AI 독해용 맞은 단어 저장 기능 ---
+    fun saveCorrectWordsForToday(userId: String, words: List<String>, onComplete: (Boolean) -> Unit)
+
 
 
 }
