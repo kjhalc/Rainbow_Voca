@@ -170,6 +170,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this, "오늘 누적 복습할 단어가 없습니다.", Toast.LENGTH_SHORT).show()
             }
         }
+        // 주형추가1
+        binding.btnAI.setOnClickListener {
+        val intent = Intent(this, PassageActivity::class.java)
+        startActivity(intent)
+        
+    }
     }
 
     private fun setupObservers() {
