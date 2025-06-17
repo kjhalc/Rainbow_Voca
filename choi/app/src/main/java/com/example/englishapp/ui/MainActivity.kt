@@ -172,8 +172,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         // 주형추가1
         binding.btnAI.setOnClickListener {
-        val intent = Intent(this, PassageActivity::class.java)
-        startActivity(intent)
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return@setOnClickListener
+
+    Firebase.firestore.collection("users").document(userId).get()
+        .addOnSuccessListener { document ->
+            val wordList = document.get("wordsForAiReadingToday") as? List<String>
+            if (!wordList.isNullOrEmpty()) {
+                val intent = Intent(this, PassageActivity::class.java).apply {
+                    putStringArrayListExtra("correct_words", ArrayList(wordList))
+                }
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "AI 독해용 단어가 없습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        .addOnFailureListener { e ->
+            Toast.makeText(this, "단어 불러오기 실패: ${e.message}", Toast.LENGTH_SHORT).show()
+            Log.e("MainActivity", "Firestore에서 단어 불러오기 실패", e)
+        }
         
     }
     }
