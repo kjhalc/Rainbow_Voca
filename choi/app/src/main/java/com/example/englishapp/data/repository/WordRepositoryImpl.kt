@@ -1002,6 +1002,25 @@ class WordRepositoryImpl(
         reviewCountListeners.keys.removeAll { it.contains(userId) }
         Log.d(TAG, "🔥 실시간 리스너 모두 해제됨 for user: $userId")
     }
+    override fun saveCorrectWordsForToday(userId: String, words: List<String>, onComplete: (Boolean) -> Unit) {
+    if (userId.isEmpty() || words.isEmpty()) {
+        onComplete(false)
+        return
+    }
+
+    val data = mapOf("wordsForAiReadingToday" to words)
+    Firebase.firestore.collection("users").document(userId)
+        .set(data, SetOptions.merge())
+        .addOnSuccessListener {
+            Log.i("WordRepositoryImpl", "AI 독해용 맞은 단어 ${words.size}개 저장 완료")
+            onComplete(true)
+        }
+        .addOnFailureListener { e ->
+            Log.e("WordRepositoryImpl", "AI 독해용 단어 저장 실패: ${e.message}", e)
+            onComplete(false)
+        }
+}
+
 
 
 
