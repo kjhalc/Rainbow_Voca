@@ -1,0 +1,54 @@
+package com.example.englishapp.ui
+
+import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.englishapp.R
+import com.example.englishapp.gpt.GptHelper
+
+class PassageActivity : AppCompatActivity() {
+
+    private lateinit var passageTextView: TextView
+    private lateinit var explanationTextView: TextView
+    private lateinit var showExplanationButton: Button
+    private lateinit var closeButton: ImageButton
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_passage)
+
+        passageTextView = findViewById(R.id.text_passage)
+        explanationTextView = findViewById(R.id.text_explanation)
+        showExplanationButton = findViewById(R.id.button_show_explanation)
+        closeButton = findViewById(R.id.button_close)
+
+        explanationTextView.text = "(해석은 버튼을 눌러 확인하세요)"
+        explanationTextView.visibility = android.view.View.GONE
+
+        // 닫기 버튼
+        closeButton.setOnClickListener {
+            finish()
+        }
+
+        // 맞은 단어 리스트 받아오기
+        val words = intent.getStringArrayListExtra("correctWords") ?: emptyList()
+
+        GptHelper.generateParagraphFromCorrectWords(words) { result ->
+            runOnUiThread {
+                Log.d("GPT", "전체 GPT 응답: $result")
+
+                val parts = result.split("해석:", "번역:", "translation:", ignoreCase = true)
+                passageTextView.text = parts.getOrNull(0)?.trim() ?: "지문 없음"
+                val explanation = parts.getOrNull(1)?.trim() ?: "해석 없음"
+
+                showExplanationButton.setOnClickListener {
+                    explanationTextView.text = explanation
+                    explanationTextView.visibility = android.view.View.VISIBLE
+                }
+            }
+        }
+    }
+}
