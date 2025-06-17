@@ -37,6 +37,14 @@ class WordQuizViewModel(
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean> = _isLoading
 
+    // ✅ GPT 문장 생성을 위한 맞은 단어 저장 리스트
+    private val correctWords = mutableListOf<Word>()  //주형추가1
+    // ✅ GPT 결과 UI 전달용 LiveData 주형추가2
+    private val _gptResult = MutableLiveData<String>()
+    val gptResult: LiveData<String> = _gptResult
+    
+    private val _currentQuestion = MutableLiveData<QuizQuestionDisplay?>()
+    
     // 현재 화면에 표시될 퀴즈 질문 데이터를 담음
     private val _currentQuestion = MutableLiveData<QuizQuestionDisplay?>()
     val currentQuestion: LiveData<QuizQuestionDisplay?> = _currentQuestion
@@ -286,6 +294,7 @@ class WordQuizViewModel(
 
         if (isCorrect) {
             correctCount++ // 맞춘 문제 수 증가
+            correctWords.add(currentWord)  // ✅ 주형추가2: 맞은 단어 저장
             Log.d(TAG, "Correct answer for: ${currentWord.word_text} (ID: $wordDocId)")
         } else {
             Log.d(TAG, "Incorrect answer for: ${currentWord.word_text} (ID: $wordDocId)")
@@ -372,6 +381,16 @@ class WordQuizViewModel(
 
         // 최종 결과 메시지는 Activity에서 setResult 후 필요시 표시하거나, _toastMessage 활용 가능
         // _toastMessage.value = "퀴즈 완료! ($correctCount/$totalQuestions)"
+
+        // ✅ 주형추가4: 맞은 단어 기반 GPT 문장 생성 요청
+        val correctWordTexts = correctWords.mapNotNull { it.word_text }
+
+        if (correctWordTexts.isNotEmpty()) {
+            generateParagraphFromCorrectWords(correctWordTexts) { result ->
+                Log.d(TAG, "GPT 문장 생성 결과: $result")
+                _gptResult.postValue(result)
+                }
+            }
     }
 
     // Toast 메시지가 UI에 표시된 후 Activity에서 호출하여 상태를 초기화
