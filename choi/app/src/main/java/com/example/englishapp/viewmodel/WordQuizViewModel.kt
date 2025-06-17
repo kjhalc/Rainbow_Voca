@@ -370,6 +370,9 @@ class WordQuizViewModel(
         _wasQuizSuccessfulOverall.value = allDbOperationsSuccessful
         _isQuizFinished.value = true // LiveData 업데이트하여 Activity에 알림
 
+        // 🔽 여기에 추가
+        saveCorrectWordsForAiReading()
+
         // 최종 결과 메시지는 Activity에서 setResult 후 필요시 표시하거나, _toastMessage 활용 가능
         // _toastMessage.value = "퀴즈 완료! ($correctCount/$totalQuestions)"
     }
